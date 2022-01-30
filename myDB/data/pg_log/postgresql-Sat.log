@@ -1,0 +1,3349 @@
+LOG:  database system was shut down at 2022-01-29 18:48:58 PST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  syntax error at or near "DROP" at character 30
+STATEMENT:  DROP TABLE IF EXISTS Project
+	DROP TABLE IF EXISTS Work_Proj
+	DROP TABLE IF EXISTS Graduate
+	DROP TABLE IF EXISTS Professor
+	DROP TABLE IF EXISTS Work_Dept
+	DROP TABLE IF EXISTS Dept
+	DROP TABLE IF EXISTS Work_In
+	CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn)
+				);
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno)
+	                        );
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near "NULL" at character 141
+STATEMENT:  CREATE TABLE Work_In (pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn) NOT NULL,
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(ssn) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near ")" at character 397
+STATEMENT:  CREATE TABLE Work_Dept (time_pc INTEGER NOT NULL,
+	                        dno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(dno, ssn),
+	                        FOREIGN KEY(ssn) REFERENCES Professor(ssn),
+	                        FOREIGN KEY(dno) REFERENCES Dept(dno),
+	                        );
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Professor;
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno)
+	                        );
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn)
+	                        );
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near "NULL" at character 141
+STATEMENT:  CREATE TABLE Work_In (pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn) NOT NULL,
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(ssn) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near ")" at character 397
+STATEMENT:  CREATE TABLE Work_Dept (time_pc INTEGER NOT NULL,
+	                        dno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(dno, ssn),
+	                        FOREIGN KEY(ssn) REFERENCES Professor(ssn),
+	                        FOREIGN KEY(dno) REFERENCES Dept(dno),
+	                        );
+ERROR:  relation "professor" does not exist
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn)
+				);
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno)
+	                        );
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near "NULL" at character 141
+STATEMENT:  CREATE TABLE Work_In (pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn) NOT NULL,
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(ssn) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near ")" at character 397
+STATEMENT:  CREATE TABLE Work_Dept (time_pc INTEGER NOT NULL,
+	                        dno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(dno, ssn),
+	                        FOREIGN KEY(ssn) REFERENCES Professor(ssn),
+	                        FOREIGN KEY(dno) REFERENCES Dept(dno),
+	                        );
+ERROR:  relation "professor" does not exist
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn)
+				);
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno)
+	                        );
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near "NULL" at character 141
+STATEMENT:  CREATE TABLE Work_In (pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn) NOT NULL,
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(ssn) REFERENCES Professor(ssn)
+	                        );
+ERROR:  syntax error at or near ")" at character 397
+STATEMENT:  CREATE TABLE Work_Dept (time_pc INTEGER NOT NULL,
+	                        dno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(dno, ssn),
+	                        FOREIGN KEY(ssn) REFERENCES Professor(ssn),
+	                        FOREIGN KEY(dno) REFERENCES Dept(dno),
+	                        );
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+				runs INTEGER,
+	                        PRIMARY KEY(dno),
+				FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "NULL" at character 141
+STATEMENT:  CREATE TABLE Work_In (pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn) NOT NULL,
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(ssn) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+				runs INTEGER,
+	                        PRIMARY KEY(dno),
+				FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "work_proj" already exists
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  relation "work_dept" already exists
+STATEMENT:  CREATE TABLE Work_Dept (time_pc INTEGER NOT NULL,
+	                        dno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(dno, ssn),
+	                        FOREIGN KEY(ssn) REFERENCES Professor(ssn),
+	                        FOREIGN KEY(dno) REFERENCES Dept(dno));
+ERROR:  relation "professor" does not exist
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  relation "project" does not exist
+STATEMENT:  CREATE TABLE Work_In (pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(ssn) REFERENCES Professor(ssn));
+ERROR:  relation "professor" does not exist
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  relation "project" does not exist
+STATEMENT:  CREATE TABLE Work_In (pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(ssn) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near ")" at character 86
+STATEMENT:  CREATE TABLE Place(
+	        address CHAR(30) NOT NULL,
+	        PRIMARY KEY(address),
+	);
+ERROR:  syntax error at or near ")" at character 164
+STATEMENT:  CREATE TABLE Telephone(
+	        phone_no INTEGER,
+	        address CHAR(30),
+	        PRIMARY KEY(phone_no),
+	        FOREIGN KEY(address) REFERENCES Place(address),
+	);
+ERROR:  syntax error at or near ")" at character 174
+STATEMENT:  CREATE TABLE Musicains(
+		ssn CHAR(11) NOT NULL,
+		name CHAR(30) NOT NULL,
+		
+		
+		address CHAR(30) NOT NULL,
+		PRIMARY KEY(ssn),
+		FOREIGN KEY(address) REFERENCES Place(address),
+	);
+ERROR:  syntax error at or near ")" at character 99
+STATEMENT:  CREATE TABLE Instrument(
+		instrid INTEGER,
+		dname CHAR(30),
+		key CHAR(30),
+		PRIMARY KEY(instrid),
+	);
+ERROR:  syntax error at or near "FOREIGN" at character 209
+STATEMENT:  CREATE TABLE Album(
+		albumidentifier CHAR(30) NOT NULL,
+		copyrightDate DATE,
+		speed CHAR(30) NOT NULL,
+		title CHAR(30) NOT NULL,
+		
+		Producer CHAR(30) NOT NULL,
+		ssn CHAR(11),
+		PRIMARY KEY(albumidentifier) 
+	 	FOREIGN KEY(Producer) REFERENCES Musicians(ssn),
+	);
+ERROR:  syntax error at or near ")" at character 228
+STATEMENT:  CREATE TABLE Songs(
+		songid CHAR(30) NOT NULL,
+		author CHAR(30) NOT NULL,
+		title CHAR(30) NOT NULL,
+		
+		albumidentifier CHAR(30),
+		Appears CHAR(30),
+		PRIMARY KEY(songid),
+		FOREIGN KEY(Appears) REFERENCES Album(albumidentifier),
+	);
+ERROR:  syntax error at or near ")" at character 181
+STATEMENT:  CREATE TABLE Plays(
+		instrid INTEGER,
+		ssn CHAR(11),
+		PRIMARY KEY(ssn, instrid),
+		FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+		FOREIGN KEY(instrid) REFERENCES Instrument(instrid),
+	);
+ERROR:  syntax error at or near "(" at character 64
+STATEMENT:  CREATE TABLE Perform(
+		songid CHAR(30),
+		ssn CHAR(11),
+		PRIMARY(songid, ssn),
+		FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+		FOREIGN KEY(songid) REFERENCES Songs(songid),
+	);
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Professor;
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Project;
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint project_manage_fkey on table project depends on table professor
+	constraint dept_runs_fkey on table dept depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Professor;
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "dept" does not exist
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "graduate" does not exist
+STATEMENT:  CREATE TABLE Work_Proj (since CHAR(30),
+	                        pno INTEGER NOT NULL,
+	                        ssn INTEGER NOT NULL,
+				supervise INTEGER NOT NULL,
+	                        PRIMARY KEY(pno, ssn),
+				FOREIGN KEY(ssn) REFERENCES Graduate(ssn),
+				FOREIGN KEY(pno) REFERENCES Project(pno),
+				FOREIGN KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint project_manage_fkey on table project depends on table professor
+	constraint dept_runs_fkey on table dept depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+				runs INTEGER,
+	                        PRIMARY KEY(dno),
+				FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint project_manage_fkey on table project depends on table professor
+	constraint dept_runs_fkey on table dept depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+				runs INTEGER,
+	                        PRIMARY KEY(dno),
+				FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint project_manage_fkey on table project depends on table professor
+	constraint dept_runs_fkey on table dept depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint project_manage_fkey on table project depends on table professor
+	constraint dept_runs_fkey on table dept depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "OP" at character 1
+STATEMENT:  OP TABLE if EXISTS Professor
+	DROP TABLE if EXISTS Dept
+	DROP TABLE if EXISTS Project
+	DROP TABLE if EXISTS Graduate
+	DROP TABLE if EXISTS Work_Dept
+	DROP TABLE if EXISTS Work_In
+	DROP TABLE if EXISTS Work_Proj
+	CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "OP" at character 1
+STATEMENT:  OP TABLE if EXISTS Professor
+	DROP TABLE if EXISTS Dept
+	DROP TABLE if EXISTS Project
+	DROP TABLE if EXISTS Graduate
+	DROP TABLE if EXISTS Work_Dept
+	DROP TABLE if EXISTS Work_In
+	DROP TABLE if EXISTS Work_Proj
+	CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "DROP" at character 32
+STATEMENT:  DROP TABLE if EXISTS Professor
+	DROP TABLE if EXISTS Dept
+	DROP TABLE if EXISTS Project
+	DROP TABLE if EXISTS Graduate
+	DROP TABLE if EXISTS Work_Dept
+	DROP TABLE if EXISTS Work_In
+	DROP TABLE if EXISTS Work_Proj
+	CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "DROP" at character 32
+STATEMENT:  DROP TABLE if EXISTS Professor
+	DROP TABLE if EXISTS Dept
+	DROP TABLE if EXISTS Project
+	DROP TABLE if EXISTS Graduate
+	DROP TABLE if EXISTS Work_Dept
+	DROP TABLE if EXISTS Work_In
+	DROP TABLE if EXISTS Work_Proj
+	CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint project_manage_fkey on table project depends on table professor
+	constraint dept_runs_fkey on table dept depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  syntax error at or near "(" at character 201
+STATEMENT:  CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 201
+STATEMENT:  CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 201
+STATEMENT:  CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 201
+STATEMENT:  CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 201
+STATEMENT:  CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  duplicate key value violates unique constraint "professor_pkey"
+DETAIL:  Key (ssn)=(46) already exists.
+STATEMENT:  INSERT INTO Professor VALUES (46, 'hey', 34, 'eeee')
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  duplicate key value violates unique constraint "professor_pkey"
+DETAIL:  Key (ssn)=(46) already exists.
+STATEMENT:  INSERT INTO Professor VALUES (46, 'hey', 34, 'eeee')
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  duplicate key value violates unique constraint "professor_pkey"
+DETAIL:  Key (ssn)=(46) already exists.
+STATEMENT:  INSERT INTO Professor VALUES (46, 'hey', 34, 'eeee')
+ERROR:  syntax error at or near "(" at character 201
+STATEMENT:  CREATE TABLE Professor (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             rank integer,
+	             speciality char(32),
+	             PRIMARY_KEY (ssn));
+ERROR:  syntax error at or near "(" at character 167
+STATEMENT:  CREATE TABLE Dept (
+	             dno integer NOT NULL,
+	             dname char(32),
+	             office char(32),
+	             runs integer,
+	             PRIMARY_KEY (dno) NOT NULL,
+	             FOREIGN_KEY(runs) REFERENCES Professor (ssn));
+ERROR:  syntax error at or near "(" at character 231
+STATEMENT:  CREATE TABLE Project (
+	             pno integer NOT NULL,
+	             sponsor char(32),
+	             start_date date,
+	             end_date date,
+	             budget integer,
+	             manage integer,
+	             PRIMARY_KEY (pno) NOT NULL,
+	             FOREIGN_KEY(manage) REFERENCES Professor(ssn));
+ERROR:  syntax error at or near "(" at character 227
+STATEMENT:  CREATE TABLE Graduate (
+	             ssn integer NOT NULL,
+	             name char(32),
+	             age integer,
+	             deg_pg char(32),
+	             major integer,
+	             advise char(32),
+	             PRIMARY_KEY (ssn) NOT NULL,
+	             FOREIGN_KEY(major) REFERENCES Dept(dno))
+	             FOREIGN_KEY(advise) REFERENCES Graduate(ssn);
+ERROR:  syntax error at or near "(" at character 160
+STATEMENT:  CREATE TABLE Work_Dept (
+	             time_pc integer NOT NULL,
+	             ssn integer NOT NULL,
+	             dno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, dno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(dno) REFERENCES Dept(dno));
+ERROR:  syntax error at or near "(" at character 119
+STATEMENT:  CREATE TABLE Work_In (
+	             ssn integer NOT NULL,
+	             pno integer NOT NULL,
+	             PRIMARY_KEY ((ssn, pno)) NOT NULL,
+	             FOREIGN_KEY(ssn) REFERENCES Professor(ssn),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno));
+ERROR:  syntax error at or near "(" at character 178
+STATEMENT:  CREATE TABLE Work_Proj (
+	             since date,
+	             pno integer NOT NULL,
+	             ssn integer NOT NULL,
+	             supervise integer,
+	             PRIMARY_KEY ((pno, ssn)),
+	             FOREIGN_KEY(pno) REFERENCES Project(pno),
+	             FOREIGN_KEY(ssn) REFERENCES Graduate(ssn),
+	             FOREIGN_KEY(supervise) REFERENCES Professor(ssn));
+ERROR:  foreign key constraint "plays_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Plays (instrid INTEGER,
+	        		ssn CHAR(11),
+	        		PRIMARY KEY(ssn, instrid),
+	        		FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+	        		FOREIGN KEY(instrid) REFERENCES Instrument(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 200
+STATEMENT:  CREATE TABLE Album (albumidentifier CHAR(30) NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Songs (songid CHAR(30) NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier CHAR(30),
+				Appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(Appears) REFERENCES Album(albumidentifier));
+ERROR:  syntax error at or near "(" at character 124
+STATEMENT:  CREATE TABLE Perform (songid CHAR(30) NOT NULL,
+				title CHAR(30),
+				author CHAR(30),
+				ssn CHAR(11) NOT NULL,
+				PRIMARY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+				FOREIGN KEY(songid) REFERENCES Songs(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint telephone_address_fkey on table telephone depends on table place
+	constraint musician_address_fkey on table musician depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  foreign key constraint "plays_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Plays (instrid INTEGER,
+	        		ssn CHAR(11),
+	        		PRIMARY KEY(ssn, instrid),
+	        		FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+	        		FOREIGN KEY(instrid) REFERENCES Instrument(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 200
+STATEMENT:  CREATE TABLE Album (albumidentifier CHAR(30) NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Songs (songid CHAR(30) NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier CHAR(30),
+				Appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(Appears) REFERENCES Album(albumidentifier));
+ERROR:  syntax error at or near "(" at character 124
+STATEMENT:  CREATE TABLE Perform (songid CHAR(30) NOT NULL,
+				title CHAR(30),
+				author CHAR(30),
+				ssn CHAR(11) NOT NULL,
+				PRIMARY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+				FOREIGN KEY(songid) REFERENCES Songs(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  foreign key constraint "plays_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Plays (instrid INTEGER,
+	        		ssn CHAR(11),
+	        		PRIMARY KEY(ssn, instrid),
+	        		FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+	        		FOREIGN KEY(instrid) REFERENCES Instrument(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 200
+STATEMENT:  CREATE TABLE Album (albumidentifier CHAR(30) NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Songs (songid CHAR(30) NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier CHAR(30),
+				Appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(Appears) REFERENCES Album(albumidentifier));
+ERROR:  relation "musicians" does not exist
+STATEMENT:  CREATE TABLE Perform (songid CHAR(30) NOT NULL,
+				title CHAR(30),
+				author CHAR(30),
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+				FOREIGN KEY(songid) REFERENCES Songs(songid));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  foreign key constraint "plays_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Plays (instrid INTEGER,
+	        		ssn CHAR(11),
+	        		PRIMARY KEY(ssn, instrid),
+	        		FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+	        		FOREIGN KEY(instrid) REFERENCES Instrument(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 200
+STATEMENT:  CREATE TABLE Album (albumidentifier CHAR(30) NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Songs (songid CHAR(30) NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier CHAR(30),
+				Appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(Appears) REFERENCES Album(albumidentifier));
+ERROR:  relation "musicians" does not exist
+STATEMENT:  CREATE TABLE Perform (songid CHAR(30) NOT NULL,
+				title CHAR(30),
+				author CHAR(30),
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+				FOREIGN KEY(songid) REFERENCES Songs(songid));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table professor because other objects depend on it
+DETAIL:  constraint dept_runs_fkey on table dept depends on table professor
+	constraint project_manage_fkey on table project depends on table professor
+	constraint work_proj_supervise_fkey on table work_proj depends on table professor
+	constraint work_in_ssn_fkey on table work_in depends on table professor
+	constraint work_dept_ssn_fkey on table work_dept depends on table professor
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Professor;
+ERROR:  cannot drop table dept because other objects depend on it
+DETAIL:  constraint graduate_major_fkey on table graduate depends on table dept
+	constraint work_dept_dno_fkey on table work_dept depends on table dept
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Dept;
+ERROR:  cannot drop table project because other objects depend on it
+DETAIL:  constraint work_proj_pno_fkey on table work_proj depends on table project
+	constraint work_in_pno_fkey on table work_in depends on table project
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Project;
+ERROR:  cannot drop table graduate because other objects depend on it
+DETAIL:  constraint work_proj_ssn_fkey on table work_proj depends on table graduate
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE if EXISTS Graduate;
+ERROR:  relation "professor" already exists
+STATEMENT:  CREATE TABLE Professor (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age CHAR(30),
+	                        rank CHAR(30),
+	                        specialty INTEGER,
+	                        PRIMARY KEY(ssn));
+ERROR:  relation "dept" already exists
+STATEMENT:  CREATE TABLE Dept (dno INTEGER NOT NULL,
+	                        dname CHAR(30),
+	                        office CHAR(30),
+	                        runs INTEGER,
+	                        PRIMARY KEY(dno),
+	                        FOREIGN KEY(runs) REFERENCES Professor(ssn));
+ERROR:  relation "project" already exists
+STATEMENT:  CREATE TABLE Project (pno INTEGER NOT NULL,
+				sponsor CHAR(30),
+			 	start_date CHAR(30),
+				end_date CHAR(30),
+				budget INTEGER,
+				manage INTEGER,
+				PRIMARY KEY(pno),
+				FOREIGN KEY(manage) REFERENCES Professor(ssn));
+ERROR:  relation "graduate" already exists
+STATEMENT:  CREATE TABLE Graduate (ssn INTEGER NOT NULL,
+	                        name CHAR(30),
+	                        age INTEGER,
+	                        deg_pg CHAR(30),
+				advise INTEGER,
+				major INTEGER,
+	                        PRIMARY KEY(ssn),
+				FOREIGN KEY(advise) REFERENCES Graduate(ssn),
+				FOREIGN KEY(major) REFERENCES Dept(dno));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  foreign key constraint "plays_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Plays (instrid INTEGER,
+	        		ssn CHAR(11),
+	        		PRIMARY KEY(ssn, instrid),
+	        		FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+	        		FOREIGN KEY(instrid) REFERENCES Instrument(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 200
+STATEMENT:  CREATE TABLE Album (albumidentifier CHAR(30) NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Songs (songid CHAR(30) NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier CHAR(30),
+				Appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(Appears) REFERENCES Album(albumidentifier));
+ERROR:  relation "musicians" does not exist
+STATEMENT:  CREATE TABLE Perform (songid CHAR(30) NOT NULL,
+				title CHAR(30),
+				author CHAR(30),
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+				FOREIGN KEY(songid) REFERENCES Songs(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  syntax error at or near "FOREIGN" at character 200
+STATEMENT:  CREATE TABLE Album (albumidentifier CHAR(30) NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Songs (songid CHAR(30) NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier CHAR(30),
+				Appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(Appears) REFERENCES Album(albumidentifier));
+ERROR:  relation "musicians" does not exist
+STATEMENT:  CREATE TABLE Perform (songid CHAR(30) NOT NULL,
+				title CHAR(30),
+				author CHAR(30),
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+				FOREIGN KEY(songid) REFERENCES Songs(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+	constraint plays_ssn_fkey on table plays depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  cannot drop table instrument because other objects depend on it
+DETAIL:  constraint plays_instrid_fkey on table plays depends on table instrument
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Instrument;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  relation "instrument" already exists
+STATEMENT:  CREATE TABLE Instrument (instrid INTEGER NOT NULL,
+				dname CHAR(30),
+				key CHAR(30),
+				PRIMARY KEY(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 200
+STATEMENT:  CREATE TABLE Album (albumidentifier CHAR(30) NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Songs (songid CHAR(30) NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier CHAR(30),
+				Appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(Appears) REFERENCES Album(albumidentifier));
+ERROR:  relation "musicians" does not exist
+STATEMENT:  CREATE TABLE Perform (songid CHAR(30) NOT NULL,
+				title CHAR(30),
+				author CHAR(30),
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musicians(ssn),
+				FOREIGN KEY(songid) REFERENCES Songs(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+	constraint plays_ssn_fkey on table plays depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  cannot drop table instrument because other objects depend on it
+DETAIL:  constraint plays_instrid_fkey on table plays depends on table instrument
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Instrument;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  relation "instrument" already exists
+STATEMENT:  CREATE TABLE Instrument (instrid INTEGER NOT NULL,
+				dname CHAR(30),
+				key CHAR(30),
+				PRIMARY KEY(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 199
+STATEMENT:  CREATE TABLE Album (albumidentifier INTEGER NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Song (songid INTEGER NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier INTEGER,
+				appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(appears) REFERENCES Album(albumidentifier));
+ERROR:  foreign key constraint "perform_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Perform (songid INTEGER NOT NULL,
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+				FOREIGN KEY(songid) REFERENCES Song(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+	constraint plays_ssn_fkey on table plays depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  cannot drop table instrument because other objects depend on it
+DETAIL:  constraint plays_instrid_fkey on table plays depends on table instrument
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Instrument;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  relation "instrument" already exists
+STATEMENT:  CREATE TABLE Instrument (instrid INTEGER NOT NULL,
+				dname CHAR(30),
+				key CHAR(30),
+				PRIMARY KEY(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 199
+STATEMENT:  CREATE TABLE Album (albumidentifier INTEGER NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Song (songid INTEGER NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier INTEGER,
+				appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(appears) REFERENCES Album(albumidentifier));
+ERROR:  foreign key constraint "perform_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Perform (songid INTEGER NOT NULL,
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+				FOREIGN KEY(songid) REFERENCES Song(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+	constraint plays_ssn_fkey on table plays depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  cannot drop table instrument because other objects depend on it
+DETAIL:  constraint plays_instrid_fkey on table plays depends on table instrument
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Instrument;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  relation "instrument" already exists
+STATEMENT:  CREATE TABLE Instrument (instrid INTEGER NOT NULL,
+				dname CHAR(30),
+				key CHAR(30),
+				PRIMARY KEY(instrid));
+ERROR:  syntax error at or near "FOREIGN" at character 199
+STATEMENT:  CREATE TABLE Album (albumidentifier INTEGER NOT NULL,
+				copyrightDate DATE,
+				speed INTEGER,
+				title CHAR(30),
+				producer INTEGER NOT NULL,
+				ssn CHAR(11),
+				PRIMARY KEY(albumidentifier) 
+	 			FOREIGN KEY(producer) REFERENCES Musician(ssn));
+ERROR:  relation "album" does not exist
+STATEMENT:  CREATE TABLE Song (songid INTEGER NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier INTEGER,
+				appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(appears) REFERENCES Album(albumidentifier));
+ERROR:  foreign key constraint "perform_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Perform (songid INTEGER NOT NULL,
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+				FOREIGN KEY(songid) REFERENCES Song(songid));
+ERROR:  cannot drop table place because other objects depend on it
+DETAIL:  constraint musician_address_fkey on table musician depends on table place
+	constraint telephone_address_fkey on table telephone depends on table place
+	constraint lives_address_fkey on table lives depends on table place
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Place;
+ERROR:  cannot drop table musician because other objects depend on it
+DETAIL:  constraint lives_ssn_fkey on table lives depends on table musician
+	constraint plays_ssn_fkey on table plays depends on table musician
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Musician;
+ERROR:  cannot drop table instrument because other objects depend on it
+DETAIL:  constraint plays_instrid_fkey on table plays depends on table instrument
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS Instrument;
+ERROR:  relation "place" already exists
+STATEMENT:  CREATE TABLE Place (address CHAR(30) NOT NULL,
+	        		PRIMARY KEY(address));
+ERROR:  relation "musician" already exists
+STATEMENT:  CREATE TABLE Musician (ssn INTEGER NOT NULL,
+				name CHAR(30) NOT NULL,
+				address CHAR(30) NOT NULL,
+				PRIMARY KEY(ssn),
+				FOREIGN KEY(address) REFERENCES Place(address));
+ERROR:  relation "instrument" already exists
+STATEMENT:  CREATE TABLE Instrument (instrid INTEGER NOT NULL,
+				dname CHAR(30),
+				key CHAR(30),
+				PRIMARY KEY(instrid));
+ERROR:  foreign key constraint "song_appears_fkey" cannot be implemented
+DETAIL:  Key columns "appears" and "albumidentifier" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Song (songid INTEGER NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier INTEGER,
+				appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(appears) REFERENCES Album(albumidentifier));
+ERROR:  foreign key constraint "perform_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Perform (songid INTEGER NOT NULL,
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+				FOREIGN KEY(songid) REFERENCES Song(songid));
+ERROR:  foreign key constraint "song_appears_fkey" cannot be implemented
+DETAIL:  Key columns "appears" and "albumidentifier" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Song (songid INTEGER NOT NULL,
+				author CHAR(30) NOT NULL,
+				title CHAR(30) NOT NULL,
+				albumidentifier INTEGER,
+				appears CHAR(30),
+				PRIMARY KEY(songid),
+				FOREIGN KEY(appears) REFERENCES Album(albumidentifier));
+ERROR:  foreign key constraint "perform_ssn_fkey" cannot be implemented
+DETAIL:  Key columns "ssn" and "ssn" are of incompatible types: character and integer.
+STATEMENT:  CREATE TABLE Perform (songid INTEGER NOT NULL,
+				ssn CHAR(11) NOT NULL,
+				PRIMARY KEY(songid, ssn),
+				FOREIGN KEY(ssn) REFERENCES Musician(ssn),
+				FOREIGN KEY(songid) REFERENCES Song(songid));

@@ -1,0 +1,1 @@
+/usr/bin/postgres "-D" "/tmp/dniss001/myDB/data" "-c" "unix_socket_directories=/tmp/dniss001/myDB/sockets" "-p" "8192"
